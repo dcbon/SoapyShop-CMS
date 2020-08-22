@@ -1,0 +1,27 @@
+<template>
+  <section>
+    <Header></Header>
+    <div class="row p-3 ml-2 mr-2">
+      <Sidebar></Sidebar>
+      <div class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+        <ProductForm></ProductForm>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script>
+import Header from '@/components/Navbar.vue'
+import Sidebar from '@/components/Sidebar.vue'
+import ProductForm from '@/components/ProductForm.vue'
+export default {
+  name: 'AddPage',
+  components: {
+    Header, Sidebar, ProductForm
+  }
+}
+</script>
+
+<style>
+
+</style>
