@@ -5,7 +5,7 @@ import router from '../router'
 
 Vue.use(Vuex)
 
-const baseURL = 'http://localhost:3000'
+const baseURL = 'https://soapyshop.herokuapp.com'
 
 export default new Vuex.Store({
   state: {
