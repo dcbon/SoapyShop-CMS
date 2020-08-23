@@ -55,7 +55,7 @@ export default {
     addProduct () {
       const payload = {
         name: this.name,
-        image_url: this.imgurl,
+        image_url: this.imgurl || 'https://cdn.eurekabookhouse.co.id/ebh/product/all/112815900-no-image-available-icon-flat-vector1.jpg',
         price: this.price,
         stock: this.stock,
         CategoryId: this.category
