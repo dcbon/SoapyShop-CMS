@@ -101,4 +101,8 @@ export default {
   height: 400px;
 }
 
+.dropdown-menu li {
+  cursor: pointer;
+}
+
 </style>
