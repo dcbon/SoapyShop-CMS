@@ -1,6 +1,9 @@
 <template>
   <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-    <router-link to="/home"><a class="ls navbar-brand col-md-3 col-lg-2 mr-0 px-3 lb">SoapyShop</a></router-link>
+    <router-link to="/home"><a class="ls navbar-brand col-md-3 col-lg-2 mr-0 px-3 lb">
+      <img src="../assets/soapyshop.png" width="50" height="50" alt="" loading="lazy">
+      SoapyShop
+    </a></router-link>
     <ul class="navbar-nav px-3">
       <li class="nav-item text-light">
         <a class="nav-link" href="#" @click.prevent="logout">Sign out</a>

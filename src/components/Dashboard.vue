@@ -7,11 +7,12 @@
           Category
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <li class="dropdown-item" href="#" @click.prevent="showAll">Show All</li>
           <li v-for="category in categories" :key="category.id" class="dropdown-item" href="#" @click.prevent="filter(category.name)">{{ category.name }}</li>
         </ul>
       </div>
     </div>
-    <div class="overflow-auto" v-if="(this.filterPage)">
+    <div class="overflow-auto" v-if="(filterPage)">
       <div class="row">
         <div class="col-3" v-for="product in filtered" :key="product.id">
           <div class="card">
@@ -28,7 +29,7 @@
         </div>
       </div>
     </div>
-    <div class="overflow-auto" v-if="(!this.filterPage)">
+    <div class="overflow-auto" v-if="(!filterPage)">
       <div class="row">
         <div class="col-3" v-for="product in products" :key="product.id">
           <div class="card">
@@ -75,12 +76,11 @@ export default {
   },
   methods: {
     filter (name) {
-      console.log({
-        name: name,
-        data: this.newData
-      })
       this.categoryName = name
       this.filterPage = true
+    },
+    showAll () {
+      this.filterPage = false
     }
   },
   created () {
