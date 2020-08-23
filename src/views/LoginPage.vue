@@ -5,7 +5,7 @@
         <div class="card p-3 mt-4 shadow">
           <div class="card-header">
             <div class="card-img-top">
-              <img src="../assets/login.svg" alt="">
+              <img src="../assets/soapyshop.png" alt="">
             </div>
           </div>
           <div class="card-body">
@@ -63,5 +63,9 @@ export default {
 <style scoped>
 img {
   width: 280px;
+}
+
+.card-header {
+  border-style: none;
 }
 </style>

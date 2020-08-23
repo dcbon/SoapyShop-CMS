@@ -62,4 +62,10 @@
   padding: 5px 10px;
 }
 
+.btn-dark:hover {
+  background-color: #ae6378 !important;
+  letter-spacing: 2px !important;
+  border: 1px solid #ae6378;
+}
+
 </style>

@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="d-flex justify-content-between align-items-center pt-3 pb-3">
-      <h1>Product Form</h1>
+      <h1>Add Product</h1>
     </div>
     <div class="col-6 justify-content-center">
       <form @submit.prevent="addProduct">

@@ -2,7 +2,7 @@
   <section>
     <div class="d-flex justify-content-between align-items-center pt-3 pb-3">
       <h1>Categories</h1>
-      <div class="btn btn-dark" @click="toAddCategory"><span class="far fa-plus-circle pr-2"></span>Category</div>
+      <div class="btn btn-dark" @click="toAddCategory"><span class="fas fa-folder-plus pr-2"></span>Add Category</div>
     </div>
     <div class="overflow-auto">
       <table class="table">
@@ -18,8 +18,8 @@
             <th scope="row">{{ category.id }}</th>
             <td>{{ category.name }}</td>
             <td>
-              <div class="btn" href="" @click.prevent="editCategory(category.id)"><span class="fas fa-edit mr-3"></span></div>
-              <div class="btn" href="" @click.prevent="deleteCategory(category.id)"><span class="fas fa-trash"></span></div>
+              <div class="btn btn-btm" href="" @click.prevent="editCategory(category.id)"><span class="fas fa-edit"></span></div>
+              <div class="btn btn-btm" href="" @click.prevent="deleteCategory(category.id)"><span class="fas fa-trash"></span></div>
             </td>
           </tr>
         </tbody>

@@ -4,8 +4,8 @@
       <ul class="nav flex-column ml-2">
         <li class="nav-item mt-2 text-dark"><router-link :to="{ name: 'HomePage' }"><span class="fas fa-home mr-2"></span>Dashboard</router-link></li>
         <li class="nav-item mt-2"><router-link :to="{ name: 'ProductPage' }"><span class="fas fa-shopping-cart mr-2"></span>Products</router-link></li>
-        <li class="nav-item mt-2"><router-link :to="{ name: 'CategoryPage' }"><span class="fas fa-list-alt mr-2"></span>Categories</router-link></li>
-        <li class="nav-item mt-2"><router-link :to="{ name: 'UserPage' }"><span class="fas fa-users mr-2"></span>Users</router-link></li>
+        <li class="nav-item mt-2"><router-link :to="{ name: 'CategoryPage' }"><span class="fas fa-folder-open mr-2"></span>Categories</router-link></li>
+        <li class="nav-item mt-2"><router-link :to="{ name: 'UserPage' }"><span class="fas fa-user-friends mr-2"></span>Users</router-link></li>
       </ul>
     </div>
   </div>

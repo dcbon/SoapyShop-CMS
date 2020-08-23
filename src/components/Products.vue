@@ -2,7 +2,7 @@
   <section>
     <div class="d-flex justify-content-between align-items-center py-3">
       <h1>Products</h1>
-      <div class="btn btn-dark mr-1" @click.prevent="toAddPage"><span class="far fa-plus-circle pr-2"></span>Product</div>
+      <div class="btn btn-dark mr-1" @click.prevent="toAddPage"><span class="far fa-cart-plus pr-2"></span>Add Product</div>
     </div>
     <div class="overflow-auto">
       <table class="table">

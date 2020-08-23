@@ -11,7 +11,7 @@
         </ul>
       </div>
     </div>
-    <div class="overflow-auto" v-if="filtered">
+    <div class="overflow-auto" v-if="(this.filterPage)">
       <div class="row">
         <div class="col-3" v-for="product in filtered" :key="product.id">
           <div class="card">
@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-    <div class="overflow-auto">
+    <div class="overflow-auto" v-if="(!this.filterPage)">
       <div class="row">
         <div class="col-3" v-for="product in products" :key="product.id">
           <div class="card">
@@ -53,31 +53,34 @@ export default {
   name: 'Dashboard',
   data () {
     return {
-      filtered: [],
-      data: []
+      newData: [],
+      categoryName: '',
+      filterPage: false
     }
   },
   computed: {
     products () {
+      const getData = this.$store.state.products
+      getData.forEach(element => {
+        this.newData.push(element)
+      })
       return this.$store.state.products
     },
     categories () {
       return this.$store.state.categories
+    },
+    filtered () {
+      return this.newData.filter(el => el.Category.name === this.categoryName)
     }
   },
   methods: {
-    setData () {
-      const getData = this.$store.state.products
-      getData.forEach(element => {
-        this.data.push(element)
-      })
-    },
     filter (name) {
-      this.data.forEach(element => {
-        if (element.Category.name === name) {
-          this.filtered.push(element)
-        }
+      console.log({
+        name: name,
+        data: this.newData
       })
+      this.categoryName = name
+      this.filterPage = true
     }
   },
   created () {
