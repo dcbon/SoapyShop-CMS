@@ -4,8 +4,7 @@
     <div class="row p-3 ml-2 mr-2">
       <Sidebar></Sidebar>
       <div class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-        <Products></Products>
-        <Categories></Categories>
+        <Dashboard></Dashboard>
       </div>
     </div>
   </div>
@@ -14,13 +13,12 @@
 <script>
 import Header from '@/components/Navbar.vue'
 import Sidebar from '@/components/Sidebar.vue'
-import Products from '@/components/Products.vue'
-import Categories from '@/components/Category.vue'
+import Dashboard from '@/components/Dashboard.vue'
 
 export default {
   name: 'Home',
   components: {
-    Header, Sidebar, Products, Categories
+    Header, Sidebar, Dashboard
   }
 }
 </script>

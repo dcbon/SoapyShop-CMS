@@ -6,6 +6,7 @@ import ProductPage from '../views/ProductPage.vue'
 import AddPage from '../views/AddPage.vue'
 import CategoryPage from '../views/CategoryPage.vue'
 import AddCategoryPage from '../views/AddCategoryPage.vue'
+import EditProductPage from '../views/EditProduct.vue'
 import EditCategoryPage from '../views/EditCategory.vue'
 import UserPage from '../views/UserPage.vue'
 
@@ -46,6 +47,11 @@ const routes = [
     path: '/add-category',
     name: 'AddCategoryPage',
     component: AddCategoryPage
+  },
+  {
+    path: '/edit-product',
+    name: 'EditProductPage',
+    component: EditProductPage
   },
   {
     path: '/users',

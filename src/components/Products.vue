@@ -29,10 +29,10 @@
             </td>
             <td>
               <tr>
-                <div class="btn-btm btn-block">Edit</div>
+                <div class="btn-btm btn-block" @click.prevent="editProduct(product.id)">Edit</div>
               </tr>
               <tr>
-                <div class="btn-btm btn-block" @click="deleted(product.id)">Delete</div>
+                <div class="btn-btm btn-block" @click.prevent="deleted(product.id)">Delete</div>
               </tr>
             </td>
           </tr>
@@ -53,6 +53,9 @@ export default {
   methods: {
     toAddPage () {
       this.$router.push({ name: 'AddPage' })
+    },
+    editProduct (id) {
+      this.$store.dispatch('editProduct', id)
     },
     deleted (id) {
       this.$store.dispatch('delete', id)

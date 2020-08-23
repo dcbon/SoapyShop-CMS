@@ -11,7 +11,9 @@ export default new Vuex.Store({
   state: {
     categories: [],
     products: [],
-    editCategory: {}
+    users: [],
+    editCategory: {},
+    editProduct: {}
   },
   mutations: {
     setCategories (state, data) {
@@ -21,6 +23,15 @@ export default new Vuex.Store({
     setProducts (state, data) {
       state.products = data.products
       // console.log(state.products, '===state');
+    },
+    setUsers (state, data) {
+      state.users = data.users
+    },
+    setEditProduct (state, data) {
+      state.editProduct = data
+    },
+    removeEditProduct (state) {
+      state.editProduct = {}
     },
     setEditCategory (state, data) {
       state.editCategory = data
@@ -62,6 +73,29 @@ export default new Vuex.Store({
     logout () {
       localStorage.clear()
       router.push({ name: 'LoginPage' })
+    },
+    getUsers (context) {
+      axios({
+        url: baseURL + '/users',
+        method: 'GET',
+        headers: {
+          access_token: localStorage.access_token
+        }
+      })
+        .then(({ data }) => {
+          context.commit('setUsers', data)
+        })
+        .catch(err => {
+          const errs = err.response.data.msg
+          errs.forEach(element => {
+            Vue.notify({
+              group: 'foo',
+              type: 'error',
+              title: 'Error!',
+              text: element
+            })
+          })
+        })
     },
     getCategories (context) {
       axios({
@@ -170,6 +204,47 @@ export default new Vuex.Store({
         })
         .catch(err => {
           console.log(err.response.data)
+          const errs = err.response.data.msg
+          errs.forEach(element => {
+            Vue.notify({
+              group: 'foo',
+              type: 'error',
+              title: 'Error!',
+              text: element
+            })
+          })
+        })
+    },
+    editProduct (context, id) {
+      this.state.products.forEach(element => {
+        if (element.id === id) {
+          context.commit('setEditProduct', element)
+          router.push({ name: 'EditProductPage' })
+        }
+      })
+    },
+    editedProduct (context, data) {
+      console.log(data, '=====edited')
+      const id = this.state.editProduct.id
+      axios({
+        url: baseURL + '/products/' + id,
+        method: 'PUT',
+        headers: {
+          access_token: localStorage.access_token
+        },
+        data: data
+      })
+        .then(() => {
+          context.commit('removeEditProduct')
+          router.push({ name: 'ProductPage' })
+          Vue.notify({
+            group: 'foo',
+            type: 'success',
+            title: 'Edited!',
+            text: 'Successfully edit Product'
+          })
+        })
+        .catch(err => {
           const errs = err.response.data.msg
           errs.forEach(element => {
             Vue.notify({

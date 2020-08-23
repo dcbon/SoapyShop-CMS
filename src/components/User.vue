@@ -13,10 +13,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>john@mail.com</td>
-            <td>08-08-20</td>
+          <tr v-for="user in users" :key="user.id">
+            <th scope="row">{{ user.id }}</th>
+            <td>{{ user.email }}</td>
+            <td>{{ user.createdAt.slice(0, 10) }} at {{ user.createdAt.slice(11, 19) }}</td>
           </tr>
         </tbody>
       </table>
@@ -26,7 +26,15 @@
 
 <script>
 export default {
-  name: 'Users'
+  name: 'Users',
+  computed: {
+    users () {
+      return this.$store.state.users
+    }
+  },
+  created () {
+    this.$store.dispatch('getUsers')
+  }
 }
 </script>
 
