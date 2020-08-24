@@ -81,9 +81,12 @@ export default {
     },
     showAll () {
       this.filterPage = false
+      this.categoryName = ''
     }
   },
   created () {
+    this.filterPage = false
+    this.categoryName = ''
     this.$store.dispatch('getProducts')
     this.$store.dispatch('getCategories')
   }

@@ -5,7 +5,7 @@
         <div class="card p-3 mt-4 shadow">
           <div class="card-header">
             <div class="card-img-top">
-              <img src="../assets/soapyshop.png" alt="">
+              <img src="../assets/soapyshop.png" class="img-fluid" alt="">
             </div>
           </div>
           <div class="card-body">
