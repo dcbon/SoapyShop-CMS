@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "soapyshop-admin",
     "public": "dist",
     "ignore": [
       "firebase.json",
