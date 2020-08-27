@@ -59,7 +59,6 @@ export default {
     },
     deleted (id) {
       this.$store.dispatch('delete', id)
-      this.$store.dispatch('getProducts')
     }
   },
   created () {

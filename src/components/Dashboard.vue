@@ -7,31 +7,14 @@
           Category
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <li class="dropdown-item" href="#" @click.prevent="showAll">Show All</li>
+          <li class="dropdown-item" href="#" @click.prevent="filter('all')">Show All</li>
           <li v-for="category in categories" :key="category.id" class="dropdown-item" href="#" @click.prevent="filter(category.name)">{{ category.name }}</li>
         </ul>
       </div>
     </div>
-    <div class="overflow-auto" v-if="(filterPage)">
+    <div class="overflow-auto">
       <div class="row">
         <div class="col-3" v-for="product in filtered" :key="product.id">
-          <div class="card">
-            <div class="card-header">
-              <img :src="product.image_url" class="mb-1 img-fluid" alt="...">
-            </div>
-            <div class="card-body">
-              <h5 class="card-title text-dark">{{ product.name }}</h5>
-              <p class="card-text text-dark">
-                <span class="fas fa-box-open text-dark mr-2"></span>{{ product.stock }}
-                <span class="fas fa-tag ml-4 text-dark mr-2"></span>Rp {{ new Intl.NumberFormat('de-DE').format(product.price) }} </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="overflow-auto" v-if="(!filterPage)">
-      <div class="row">
-        <div class="col-3" v-for="product in products" :key="product.id">
           <div class="card">
             <div class="card-header">
               <img :src="product.image_url" class="mb-1 img-fluid" alt="...">
@@ -54,41 +37,31 @@ export default {
   name: 'Dashboard',
   data () {
     return {
-      newData: [],
-      categoryName: '',
-      filterPage: false
+      categoryName: ''
     }
   },
   computed: {
-    products () {
-      const getData = this.$store.state.products
-      getData.forEach(element => {
-        this.newData.push(element)
-      })
-      return this.$store.state.products
-    },
     categories () {
       return this.$store.state.categories
     },
     filtered () {
-      return this.newData.filter(el => el.Category.name === this.categoryName)
+      if (this.categoryName === '') {
+        return this.$store.state.products
+      } else {
+        return this.$store.state.products.filter(el => el.Category.name === this.categoryName)
+      }
     }
   },
   methods: {
     filter (name) {
-      this.categoryName = name
-      this.filterPage = true
-    },
-    showAll () {
-      this.filterPage = false
-      this.categoryName = ''
+      if (name === 'all') this.categoryName = ''
+      else this.categoryName = name
     }
   },
   created () {
-    this.filterPage = false
     this.categoryName = ''
-    this.$store.dispatch('getProducts')
     this.$store.dispatch('getCategories')
+    this.$store.dispatch('getProducts')
   }
 }
 </script>

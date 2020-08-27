@@ -45,7 +45,6 @@ export default {
     },
     deleteCategory  (id) {
       this.$store.dispatch('deleteCategory', id)
-      this.$store.dispatch('getCategories')
     }
   },
   created () {

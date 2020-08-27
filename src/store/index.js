@@ -49,7 +49,7 @@ export default new Vuex.Store({
         data: data
       })
         .then(({ data }) => {
-          console.log(data)
+          // console.log(data)
           localStorage.setItem('access_token', data.access_token)
           router.push({ name: 'HomePage' })
           Vue.notify({
@@ -84,6 +84,7 @@ export default new Vuex.Store({
         }
       })
         .then(({ data }) => {
+          // console.log(data, '===get user');
           context.commit('setUsers', data)
         })
         .catch(err => {
@@ -107,6 +108,7 @@ export default new Vuex.Store({
         }
       })
         .then(({ data }) => {
+          // console.log(data, '===get category');
           context.commit('setCategories', data)
         })
         .catch(err => {
@@ -130,6 +132,7 @@ export default new Vuex.Store({
         }
       })
         .then(({ data }) => {
+          // console.log(data, '===get product');
           context.commit('setProducts', data)
         })
         .catch(err => {
@@ -145,7 +148,6 @@ export default new Vuex.Store({
         })
     },
     addProduct (context, data) {
-      console.log(data, '====addProduct')
       axios({
         url: baseURL + '/products',
         method: 'POST',
@@ -308,7 +310,7 @@ export default new Vuex.Store({
         }
       })
         .then(() => {
-          router.push({ name: 'ProductPage' })
+          context.dispatch('getProducts')
           Vue.notify({
             group: 'foo',
             type: 'success',
@@ -337,7 +339,7 @@ export default new Vuex.Store({
         }
       })
         .then(() => {
-          router.push({ name: 'CategoryPage' })
+          context.dispatch('getCategories')
           Vue.notify({
             group: 'foo',
             type: 'success',
@@ -346,6 +348,36 @@ export default new Vuex.Store({
           })
         })
         .catch(err => {
+          const errs = err.response.data.msg
+          errs.forEach(element => {
+            Vue.notify({
+              group: 'foo',
+              type: 'error',
+              title: 'Error!',
+              text: element
+            })
+          })
+        })
+    },
+    deleteUser (context, id) {
+      axios({
+        url: baseURL + '/users/' + id,
+        method: 'DELETE',
+        headers: {
+          access_token: localStorage.access_token
+        }
+      })
+        .then(() => {
+          context.dispatch('getUsers')
+          Vue.notify({
+            group: 'foo',
+            type: 'success',
+            title: 'Deleted!',
+            text: 'Successfully delete user'
+          })
+        })
+        .catch(err => {
+          console.log(err, '===err delete user')
           const errs = err.response.data.msg
           errs.forEach(element => {
             Vue.notify({
